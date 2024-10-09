@@ -16,4 +16,11 @@ export const NURSES: Nurse[] = [
       email: 'nurse2@example.com',
       token: 'reset-token-2'
     },
+    {
+        id: 3,
+        username: 'admin',
+        password: 'admin',
+        email: 'admin@example.com',
+        token: 'reset-token-0'
+      },
 ];

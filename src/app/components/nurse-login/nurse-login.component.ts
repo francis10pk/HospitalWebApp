@@ -28,7 +28,7 @@ export class NurseLoginComponent implements OnInit {
       next: (response) => {
         this.message = { text: response.message, success: response.success };
         if (response.success) {
-          this.router.navigate(['/nurse-dashboard']);
+          this.router.navigate(['/dashboard']);
         }
       },
       error: (err) => {

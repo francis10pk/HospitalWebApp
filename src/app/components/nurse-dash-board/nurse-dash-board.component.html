@@ -1,1 +1,31 @@
-<p>nurse-dash-board works!</p>
+<div class="dashboard-container">
+    <h1>Nurse Dashboard</h1>
+  
+    <div class="action-buttons">
+        <button (click)="onCreatePatient()" class="btn btn-primary">Create Patient</button>
+        <button (click)="onSearchPatients()" class="btn btn-secondary">Search/Edit Patients</button>
+        <button (click)="onAssistance()" class="btn btn-warning">Request Assistance</button>
+    
+    <div class="top-right-buttons">
+        <button (click)="onEditPassword()" class="btn btn-info">Edit Password</button>
+        <button (click)="onLogout()" class="btn btn-dark">Logout</button>
+    </div>
+    </div>
+    
+  
+    <div *ngIf="activeForm === 'create'">
+        <app-create-edit-patient></app-create-edit-patient>
+    </div>
+  
+    <div *ngIf="activeForm === 'search/edit'">
+        <app-search-patient></app-search-patient>
+    </div>
+
+    <div *ngIf="activeForm === 'assistance'">
+        <app-request-assistance></app-request-assistance>
+    </div>
+
+    <div *ngIf="activeForm === 'editpassword'">
+        <app-edit-password></app-edit-password>
+    </div>
+</div>
