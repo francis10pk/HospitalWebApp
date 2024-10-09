@@ -15,13 +15,16 @@ export class PatientItemListComponent {
       name: '',
       age: 0,
       gender: '',
-      vitals: {
-        weight: 0,
-        height: 0,
-        bloodPressure: '',
-        sugarLevel: 0,
-        heartRate: 0
-      },
+      vitals: 
+         {
+            weight: 0,
+            height: 0,
+            bloodPressure: '',
+            sugarLevel: 0,
+            heartRate: 0
+          }
+        
+      ,
       ongoingMedications: '',
       allergies: '',
       critical: false

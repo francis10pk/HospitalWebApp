@@ -59,8 +59,10 @@ export class CreateEditPatientComponent implements OnInit {
   }
 
   onCreatePatient(): void {
+    // Ensure all properties are defined before creating a patient
     if (this.isPatientValid(this.patient)) {
       this.patientService.createPatient(this.patient);
+
     } else {
       console.error("Patient data is invalid");
     }
@@ -69,7 +71,7 @@ export class CreateEditPatientComponent implements OnInit {
     return (
       typeof patient.id === 'number' &&
       typeof patient.name === 'string' &&
-      typeof patient.age === 'number' &&
+      typeof patient.age === 'number' && patient.age > 0 &&
       typeof patient.gender === 'string' &&
       this.isVitalsValid(patient.vitals) &&
       typeof patient.ongoingMedications === 'string' &&
@@ -78,14 +80,15 @@ export class CreateEditPatientComponent implements OnInit {
     );
   }
   
-  // Helper method to validate vitals
   private isVitalsValid(vitals: Vitals): boolean {
     return (
-      typeof vitals.weight === 'number' &&
-      typeof vitals.height === 'number' &&
+      typeof vitals.weight === 'number' && vitals.weight > 0 &&
+      typeof vitals.height === 'number' && vitals.height > 0 &&
       typeof vitals.bloodPressure === 'string' &&
-      typeof vitals.sugarLevel === 'number' &&
-      typeof vitals.heartRate === 'number'
+      typeof vitals.sugarLevel === 'number' && vitals.sugarLevel > 0 &&
+      typeof vitals.heartRate === 'number' && vitals.heartRate > 0
     );
   }
+  
+
 }
