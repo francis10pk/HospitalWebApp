@@ -42,6 +42,6 @@ export class NurseDashboardComponent {
 
 
   onLogout() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['']);
   }
 }
