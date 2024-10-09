@@ -1,1 +1,10 @@
-<p>search-patient works!</p>
+<div>
+    <h1>Search Patients</h1>
+    <input type="text" [(ngModel)]="searchTerm" (input)="filterPatients()" placeholder="Search by name..." />
+    
+    <div *ngIf="loading">Loading patients...</div>
+    <div *ngIf="errorMessage">{{ errorMessage }}</div>
+    <app-patient-item-list *ngFor="let patient of filteredPatients" [patient]="patient"></app-patient-item-list>
+
+  </div>
+  

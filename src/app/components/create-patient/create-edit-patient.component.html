@@ -1,1 +1,144 @@
-<p>create-edit-patient works!</p>
+<div class="create-patient-container">
+    <h2>Create New Patient</h2>
+  
+    <form (ngSubmit)="onCreatePatient()" #createPatientForm="ngForm">
+      <div class="form-group">
+        <label for="name">Patient Name:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          [(ngModel)]="patient.name"
+          class="form-control"
+          placeholder="Enter patient name"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input
+          type="number"
+          id="age"
+          name="age"
+          required
+          min="1"
+          [(ngModel)]="patient.age"
+          class="form-control"
+          placeholder="Enter patient age"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" [(ngModel)]="patient.gender" class="form-control">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+  
+      <h3>Vitals</h3>
+      <div class="form-group">
+        <label for="weight">Weight (kg):</label>
+        <input
+          type="number"
+          id="weight"
+          name="weight"
+          required
+          min="0.1"
+          [(ngModel)]="patient.vitals.weight"
+          class="form-control"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="height">Height (cm):</label>
+        <input
+          type="number"
+          id="height"
+          name="height"
+          required
+          min="1" 
+          [(ngModel)]="patient.vitals.height"
+          class="form-control"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="bloodPressure">Blood Pressure:</label>
+        <input
+          type="text"
+          id="bloodPressure"
+          name="bloodPressure"
+          required
+          [(ngModel)]="patient.vitals.bloodPressure"
+          class="form-control"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="sugarLevel">Sugar Level:</label>
+        <input
+          type="number"
+          id="sugarLevel"
+          name="sugarLevel"
+          required
+          min="1" 
+          [(ngModel)]="patient.vitals.sugarLevel"
+          class="form-control"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="heartRate">Heart Rate:</label>
+        <input
+          type="number"
+          id="heartRate"
+          name="heartRate"
+          required
+          min="1" 
+          [(ngModel)]="patient.vitals.heartRate"
+          class="form-control"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="ongoingMedications">Ongoing Medications:</label>
+        <textarea
+          id="ongoingMedications"
+          name="ongoingMedications"
+          [(ngModel)]="patient.ongoingMedications"
+          class="form-control"
+          placeholder="Enter ongoing medications"
+        ></textarea>
+      </div>
+  
+      <div class="form-group">
+        <label for="allergies">Allergies:</label>
+        <textarea
+          id="allergies"
+          name="allergies"
+          [(ngModel)]="patient.allergies"
+          class="form-control"
+          placeholder="Enter any allergies"
+        ></textarea>
+      </div>
+  
+      <div class="form-group">
+        <label for="critical">Critical:</label>
+        <input
+          type="checkbox"
+          id="critical"
+          name="critical"
+          [(ngModel)]="patient.critical"
+          class="form-check-input"
+        />
+      </div>
+  
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Create Patient</button>
+      </div>
+  
+      <div *ngIf="message" class="alert alert-info">{{ message }}</div>
+    </form>
+</div>

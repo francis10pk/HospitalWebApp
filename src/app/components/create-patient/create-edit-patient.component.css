@@ -1,0 +1,66 @@
+.create-patient-container {
+    max-width: 600px; /* Set a max width for the container */
+    margin: 20px auto; /* Center the form horizontally */
+    padding: 20px; /* Add some padding */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+.create-patient-container h2 {
+    text-align: center; /* Center the title */
+    margin-bottom: 20px; /* Space below the title */
+    color: #333; /* Darker text color */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Space between form groups */
+}
+
+.form-group label {
+    display: block; /* Make labels block-level for better spacing */
+    margin-bottom: 5px; /* Space below labels */
+    font-weight: bold; /* Bold labels */
+}
+
+.form-control {
+    width: 100%; /* Full width for inputs */
+    padding: 10px; /* Add padding for inputs */
+    border: 1px solid #ccc; /* Border for inputs */
+    border-radius: 4px; /* Rounded corners */
+    transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+.form-control:focus {
+    border-color: #007bff; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+.btn {
+    width: 100%; /* Full width for the button */
+    padding: 10px; /* Add padding */
+    background-color: #007bff; /* Primary button color */
+    color: #fff; /* White text color */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Change cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.alert {
+    margin-top: 20px; /* Space above alert */
+    padding: 10px; /* Add padding to alert */
+    border: 1px solid transparent; /* Transparent border */
+    border-radius: 4px; /* Rounded corners */
+}
+
+.alert-info {
+    background-color: #e7f3fe; /* Light blue background */
+    border-color: #b3d7ff; /* Blue border */
+    color: #31708f; /* Darker blue text */
+}
