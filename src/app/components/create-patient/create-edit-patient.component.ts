@@ -1,10 +1,9 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router'; 
 import { Patient, Vitals } from '../../models/patient';
 import { PatientServiceService } from '../../services/patient-service.service';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-create-edit-patient',
@@ -15,22 +14,25 @@ import { NgForm } from '@angular/forms';
 })
 export class CreateEditPatientComponent implements OnInit {
   @ViewChild('createPatientForm') createPatientForm!: NgForm;
+
+  // Initialize the patient with default values
   patient: Patient = {
     id: 0,
     name: '',
-    age: 0,
+    age: null, // Allow null for flexibility
     gender: '',
     vitals: {
-      weight: 0,
-      height: 0,
+      weight: null,
+      height: null,
       bloodPressure: '',
-      sugarLevel: 0,
-      heartRate: 0
+      sugarLevel: null,
+      heartRate: null
     },
     ongoingMedications: '',
     allergies: '',
     critical: false
   };
+  
   message: string = '';
 
   constructor(
@@ -59,17 +61,45 @@ export class CreateEditPatientComponent implements OnInit {
   }
 
   onCreatePatient(): void {
-    // Ensure all properties are defined before creating a patient
-    if (this.isPatientValid(this.patient)) {
-      this.patientService.createPatient(this.patient);
-
+    // Use Angular's form validation before submission
+    if (this.createPatientForm.valid && this.isPatientValid(this.patient)) {
+      this.patientService.createPatient(this.patient).subscribe(() => {
+        this.message = 'Patient created successfully!';
+        this.resetPatientData();
+        
+      }, error => {
+        console.error("Error creating patient", error);
+        this.message = 'Failed to create patient. Please try again.';
+      });
     } else {
       console.error("Patient data is invalid");
+      this.message = 'Please fill out all fields correctly.';
     }
   }
+
+  // Reset patient object to default values
+  resetPatientData(): void {
+    this.patient = {
+      id: 0,
+      name: '',
+      age: null,
+      gender: '',
+      vitals: {
+        weight: null,
+        height: null,
+        bloodPressure: '',
+        sugarLevel: null,
+        heartRate: null
+      },
+      ongoingMedications: '',
+      allergies: '',
+      critical: false
+    };
+  }
+
+  // Validate patient object
   private isPatientValid(patient: Patient): boolean {
     return (
-      typeof patient.id === 'number' &&
       typeof patient.name === 'string' &&
       typeof patient.age === 'number' && patient.age > 0 &&
       typeof patient.gender === 'string' &&
@@ -79,7 +109,7 @@ export class CreateEditPatientComponent implements OnInit {
       typeof patient.critical === 'boolean'
     );
   }
-  
+
   private isVitalsValid(vitals: Vitals): boolean {
     return (
       typeof vitals.weight === 'number' && vitals.weight > 0 &&
@@ -89,6 +119,4 @@ export class CreateEditPatientComponent implements OnInit {
       typeof vitals.heartRate === 'number' && vitals.heartRate > 0
     );
   }
-  
-
 }

@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { PatientItemListComponent } from '../patient-item-list/patient-item-list.component';
 import { PatientServiceService } from '../../services/patient-service.service';
@@ -5,7 +6,7 @@ import { Router } from '@angular/router';
 import { Patient } from '../../models/patient';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'
-
+ 
 @Component({
   selector: 'app-search-patient',
   standalone: true,
@@ -19,13 +20,14 @@ export class SearchPatientComponent implements OnInit {
   loading: boolean = true; // Loading state
   errorMessage: string | null = null; // Error message state
   searchTerm: string = ''; // Search term for filtering
-
+ 
   constructor(private patientService: PatientServiceService, private router: Router) {}
-
+ 
   ngOnInit(): void {
     this.fetchPatients(); // Call the fetchPatients method on component initialization
+    //this.patientService.getPatients()
   }
-
+ 
   fetchPatients(): void {
     this.patientService.getPatients().subscribe(
       (data: Patient[]) => {
@@ -40,10 +42,10 @@ export class SearchPatientComponent implements OnInit {
       }
     );
   }
-
+ 
   // Method to filter patients based on search term
   filterPatients(): void {
-    this.filteredPatients = this.patients.filter(patient => 
+    this.filteredPatients = this.patients.filter(patient =>
       patient.name.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }

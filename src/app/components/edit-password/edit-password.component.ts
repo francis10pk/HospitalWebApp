@@ -28,41 +28,49 @@ export class EditPasswordComponent {
   toggleNewPasswordVisibility() {
     this.isNewPasswordVisible = !this.isNewPasswordVisible;
   }
+  
 
   onUpdatePassword() {
-    // Check if the new password and confirmation match
-    if (!this.newPassword || !this.confirmPassword) {
+    // Ensure all fields are filled
+    if (!this.currentPassword || !this.newPassword || !this.confirmPassword) {
       this.message = { text: 'All fields are required.', success: false };
       return;
     }
   
+    // Check if the new password and confirmation match
     if (this.newPassword !== this.confirmPassword) {
       this.message = { text: 'New password and confirmation do not match.', success: false };
       return;
     }
   
-    // Attempt to login with the current password to validate the user
-    this.authService.login(this.currentPassword, this.currentPassword).subscribe(response => {
+    // Get the logged-in nurse's username
+    const loggedInNurse = this.authService.getLoggedInNurse();
+    if (!loggedInNurse) {
+      this.message = { text: 'No nurse is currently logged in.', success: false };
+      return;
+    }
+  
+    // Validate the current password by logging in
+    this.authService.login(loggedInNurse.username, this.currentPassword).subscribe(response => {
       if (response.success) {
-        // Call the method to reset the password
+        // If login is successful, reset the password using the nurse's token
         this.authService.resetPassword(response.nurse.token, this.newPassword).subscribe(res => {
-          this.message = res.message;
           if (res.success) {
+            this.message = { text: 'Password updated successfully.', success: true };
             // Optionally navigate away after a successful update
-            this.message = { text: res.message || 'Password Saved.', success: true };
+            this.router.navigate(['/dashboard']);
           } else {
-            // Handle case where password reset fails
-            this.message = { text: res.message || 'Failed to reset password.', success: false };
+            this.message = { text: 'Failed to update password.', success: false };
           }
         });
       } else {
-        // Handle invalid current password
         this.message = { text: 'Invalid current password.', success: false };
       }
     }, error => {
-      // Handle error from the login service
       this.message = { text: 'An error occurred while updating the password.', success: false };
     });
   }
+  
+  
   
 }

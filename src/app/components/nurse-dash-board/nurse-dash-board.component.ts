@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -7,7 +7,8 @@ import { SearchPatientComponent } from "../search-patient/search-patient.compone
 import { RecordVitalsComponent } from "../record-vitals/record-vitals.component";
 import { RequestAssistanceComponent } from "../request-assistance/request-assistance.component";
 import { EditPasswordComponent } from "../edit-password/edit-password.component";
-
+import { AuthServiceService } from '../../services/auth-service.service'; 
+import { Nurse } from '../../models/nurse';
 
 @Component({
   selector: 'app-nurse-dash-board',
@@ -16,20 +17,25 @@ import { EditPasswordComponent } from "../edit-password/edit-password.component"
   templateUrl: './nurse-dash-board.component.html',
   styleUrl: './nurse-dash-board.component.css'
 })
-
-export class NurseDashboardComponent {
+export class NurseDashboardComponent implements OnInit {
   showCreatePatientForm: boolean = false;
   showSearchPatientForm: boolean = false;
   activeForm: 'create' | 'search/edit' | 'assistance' | 'editpassword' | null = null; 
 
-  constructor(private router: Router) {}
+  loggedInNurse: Nurse | null = null; 
+
+  constructor(private router: Router, private authService: AuthServiceService) {}
+
+  ngOnInit() {
+    this.loggedInNurse = this.authService.getLoggedInNurse();
+  }
 
   onCreatePatient() {
-    this.activeForm = 'create'; // Set active form to create
+    this.activeForm = 'create'; 
   }
 
   onSearchPatients() {
-    this.activeForm = 'search/edit'; // Set active form to search
+    this.activeForm = 'search/edit'; 
   }
 
   onAssistance() {
@@ -39,7 +45,6 @@ export class NurseDashboardComponent {
   onEditPassword() {
     this.activeForm = 'editpassword';
   }
-
 
   onLogout() {
     this.router.navigate(['']);

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { Patient } from '../models/patient';
-import { PATIENTS } from '../models/data_patient'; // Adjust the import path as needed
+import { PATIENTS } from '../models/data_patient'; 
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +11,15 @@ export class PatientServiceService {
 
   constructor() { }
 
+  lastId: number = Math.max(...PATIENTS.map(p => p.id), 0);
+
   createPatient(patient: Patient): Observable<any> {
-    // Assign a new ID
-    patient.id = this.patients.length ? Math.max(...this.patients.map(p => p.id)) + 1 : 0;
-    this.patients.push(patient);
-    return of({ success: true, message: 'Patient created successfully!' });
-  }
+  // Assign a new ID by incrementing the last used ID
+  this.lastId += 1;
+  patient.id = this.lastId;
+  this.patients.push(patient);
+  return of({ success: true, message: 'Patient created successfully!' });
+}
 
   updatePatient(updatedPatient: Patient): Observable<Patient> {
     // Find index of the patient to update
