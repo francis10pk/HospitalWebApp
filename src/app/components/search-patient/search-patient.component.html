@@ -1,10 +1,92 @@
 <div>
-    <h1>Search Patients</h1>
-    <input type="text" [(ngModel)]="searchTerm" (input)="filterPatients()" placeholder="Search by name..." />
-    
-    <div *ngIf="loading">Loading patients...</div>
-    <div *ngIf="errorMessage">{{ errorMessage }}</div>
-    <app-patient-item-list *ngFor="let patient of filteredPatients" [patient]="patient"></app-patient-item-list>
+  <h1>Patient Management</h1>
 
-  </div>
+  <!-- Dropdown to select search criteria -->
+  <label for="searchBy">Search by: </label>
+  <select [(ngModel)]="searchBy" id="searchBy">
+      <option value="name">Patient Name</option>
+      <option value="id">Patient ID</option>
+  </select>
+
+  <!-- Input for search term -->
+  <input type="text" [(ngModel)]="searchTerm" (input)="filterPatients()" placeholder="Search by {{searchBy === 'name' ? 'name' : 'ID'}}..." />
+
   
+  <!-- If no search is made, show all patients -->
+  <h2>All Patients</h2>
+  <div *ngIf="!searchTerm">
+      <app-patient-item-list *ngFor="let patient of patients" [patient]="patient" (patientSelected)="selectPatient(patient)"></app-patient-item-list>
+  </div>
+
+  <!-- Search results -->
+  <div *ngIf="filteredPatients.length && searchTerm">
+      <h2>Search Results</h2>
+      <app-patient-item-list *ngFor="let patient of filteredPatients" [patient]="patient" (patientSelected)="selectPatient(patient)"></app-patient-item-list>
+  </div>
+
+  <!-- No patients found -->
+  <div *ngIf="!filteredPatients.length && searchTerm">
+      <p>No patients found.</p>
+  </div>
+
+  <!-- Patient Details Section -->
+  <div *ngIf="selectedPatient">
+      <h2>Patient Details</h2>
+      
+      <form (ngSubmit)="updatePatient()">
+          <div>
+              <label for="name">Name:</label>
+              <input type="text" [(ngModel)]="selectedPatient.name" name="name" id="name" required />
+          </div>
+          
+          <div>
+              <label for="age">Age:</label>
+              <input type="number" [(ngModel)]="selectedPatient.age" name="age" id="age" required />
+          </div>
+          
+          <div>
+              <label for="gender">Gender:</label>
+              <input type="text" [(ngModel)]="selectedPatient.gender" name="gender" id="gender" />
+          </div>
+          
+          <div>
+              <label for="ongoingMedications">Ongoing Medications:</label>
+              <input type="text" [(ngModel)]="selectedPatient.ongoingMedications" name="ongoingMedications" id="ongoingMedications" />
+          </div>
+          
+          <div>
+              <label for="allergies">Allergies:</label>
+              <input type="text" [(ngModel)]="selectedPatient.allergies" name="allergies" id="allergies" />
+          </div>
+          
+          <div>
+              <label for="weight">Weight:</label>
+              <input type="number" [(ngModel)]="selectedPatient.vitals.weight" name="weight" id="weight" required />
+          </div>
+          
+          <div>
+              <label for="height">Height:</label>
+              <input type="number" [(ngModel)]="selectedPatient.vitals.height" name="height" id="height" required />
+          </div>
+          
+          <div>
+              <label for="bloodPressure">Blood Pressure:</label>
+              <input type="text" [(ngModel)]="selectedPatient.vitals.bloodPressure" name="bloodPressure" id="bloodPressure" required />
+          </div>
+          
+          <div>
+              <label for="sugarLevel">Sugar Level:</label>
+              <input type="number" [(ngModel)]="selectedPatient.vitals.sugarLevel" name="sugarLevel" id="sugarLevel" required />
+          </div>
+          
+          <div>
+              <label for="heartRate">Heart Rate:</label>
+              <input type="number" [(ngModel)]="selectedPatient.vitals.heartRate" name="heartRate" id="heartRate" required />
+          </div>
+
+          <!-- Button to Save Changes -->
+          <button type="submit">Save Changes</button>
+          <button type="button" (click)="selectedPatient = null">Cancel</button>
+      </form>
+  </div>
+</div>

@@ -32,9 +32,10 @@ export class PatientServiceService {
     }
   }
 
-  getPatients(): Observable<Patient[]> {
-    return of(this.patients);
-  }
+  // getPatients(): Observable<Patient[]> {
+  //   return of(this.patients);
+  // }
+
 
   deletePatient(id: number): Observable<any> {
     const index = this.patients.findIndex(patient => patient.id === id);
@@ -45,5 +46,12 @@ export class PatientServiceService {
     } else {
       return throwError(new Error('Patient not found')); // Throw an error if not found
     }
+  }
+
+  //Local Storage
+  getPatients(): Observable<Patient[]> {
+    const patientsFromStorage = localStorage.getItem('patients');
+    this.patients = patientsFromStorage ? JSON.parse(patientsFromStorage) : PATIENTS; // Use default if no data
+    return of(this.patients);
   }
 }

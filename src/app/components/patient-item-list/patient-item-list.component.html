@@ -1,5 +1,15 @@
-<div>
-    <h4>
-        {{patient.id}} - {{patient.name}} - {{patient.gender}}
-    </h4>
-</div>>
+
+
+<!-- <div class="patient-item" (click)="patientSelected.emit(patient)">
+    <h3>{{ patient.name }}</h3>
+    <p>Age: {{ patient.age }}</p>
+    <p>Gender: {{ patient.gender }}</p>
+    <a (click)="viewDetails(patient.id); $event.stopPropagation()">See Details</a>
+</div>
+ -->
+ <div class="patient-item">
+    <h3>{{ patient.name }}</h3>
+    <p>Age: {{ patient.age }}</p>
+    <p>Gender: {{ patient.gender }}</p>
+    <a (click)="viewDetails(patient.id)">See Details</a>
+</div>

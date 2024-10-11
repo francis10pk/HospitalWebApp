@@ -1,1 +1,83 @@
-<p>request-assistance works!</p>
+<div class="request-assistance-container">
+    <h2>Patient Health Monitoring</h2>
+
+    <!-- Ask for Customer ID first -->
+    <div *ngIf="!patientLoaded">
+        <label for="customerId">Enter Customer ID:</label>
+        <input type="text" [(ngModel)]="customerId" id="customerId" class="form-control" placeholder="Customer ID" />
+        <button (click)="loadPatientData()" class="btn btn-primary">Load Patient Data</button>
+    </div>
+
+    <!-- Once patient data is loaded -->
+    <div *ngIf="patientLoaded">
+        <!-- Display Patient Information -->
+        <h3>Patient Details</h3>
+        <p>Patient Name: {{ patient?.name }}</p>
+        <p>Age: {{ patient?.age }}</p>
+        <p>Gender: {{ patient?.gender }}</p>
+        <p>Heart Rate: {{ patient?.vitals?.heartRate }} bpm</p>
+        <p>Blood Pressure: {{ patient?.vitals?.bloodPressure }}</p>
+
+        <!-- Request Assistance Button -->
+        <button (click)="onRequestAssistance()" class="btn btn-danger">Request Assistance</button>
+
+        <!-- Display Message -->
+        <div *ngIf="message" class="alert" [ngClass]="{ 'alert-success': !needsAssistance, 'alert-danger': needsAssistance }">
+            {{ message }}
+        </div>
+
+        <!-- Display options for booking or assistance -->
+        <div *ngIf="needsAssistance">
+            <h3>Take Action</h3>
+
+            <!-- Book Appointment Section -->
+            <form (ngSubmit)="onSubmit()">
+                <div>
+                    <label for="appointment">Book Doctor's Appointment</label>
+                    <input type="datetime-local" id="appointment" [(ngModel)]="appointmentDateTime" name="appointmentDateTime" class="form-control" />
+                </div>
+
+                <!-- Select Doctor Section -->
+                <div>
+                    <label for="doctorName">Select Doctor</label>
+                    <select id="doctorName" [(ngModel)]="selectedDoctor" name="selectedDoctor" class="form-control">
+                        <option value="" disabled selected>Select a doctor</option>
+                        <option *ngFor="let doctor of doctors" [value]="doctor.name">{{ doctor.name }} - {{ doctor.department }}</option>
+                    </select>
+                </div>
+
+                <!-- Assistance Method Section -->
+                <div>
+                    <label for="contactMethod">Choose Assistance Method:</label>
+                    <select id="contactMethod" [(ngModel)]="assistanceMethod" name="assistanceMethod" (change)="onAssistanceMethodChange()" class="form-control">
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="ambulance">Call Ambulance</option>
+                        <option value="doctor">Call Doctor</option>
+                        <option value="icu">Book ICU</option>
+                    </select>
+                </div>
+
+                <!-- Display Phone Numbers or ICU Details based on Selection -->
+                <div *ngIf="assistanceMethod === 'ambulance'">
+                    <h4>Ambulance Services:</h4>
+                    <p>Call Ambulance: +1 800 123 4567</p>
+                </div>
+
+                <div *ngIf="assistanceMethod === 'doctor' && selectedDoctor">
+                    <h4>Doctor Contact:</h4>
+                    <p>Call Doctor: +1 800 765 4321</p>
+                </div>
+
+                <div *ngIf="assistanceMethod === 'icu'">
+                    <h4>ICU Booking:</h4>
+                    <p>ICU Availability: 5 Beds</p>
+                    <label for="icuDetails">Additional Notes for ICU Booking:</label>
+                    <textarea id="icuDetails" [(ngModel)]="icuNotes" name="icuNotes" class="form-control" placeholder="Enter any specific ICU requirements"></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
