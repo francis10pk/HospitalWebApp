@@ -5,7 +5,7 @@
     <div *ngIf="!patientLoaded">
         <label for="customerId">Enter Customer ID:</label>
         <input type="text" [(ngModel)]="customerId" id="customerId" class="form-control" placeholder="Customer ID" />
-        <button (click)="loadPatientData()" class="btn btn-primary">Load Patient Data</button>
+        <button (click)="loadPatientData()" class="btn-load-patientData">Load Patient Data</button>
     </div>
 
     <!-- Once patient data is loaded -->
@@ -76,7 +76,7 @@
                 </div>
 
                 <!-- Submit Button -->
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn-submit-request">Submit</button>
             </form>
         </div>
     </div>

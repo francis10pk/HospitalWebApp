@@ -1,120 +1,194 @@
-/* General container styles */
-.dashboard-container {
-    max-width: 1200px; /* Set a maximum width for larger screens */
-    margin: 20px auto; /* Center the container */
-    padding: 20px; /* Add some padding */
-    border-radius: 10px; /* Rounded corners */
-    background-color: #ffffff; /* White background for contrast */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+/* Main App Container */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure it takes full height of the viewport */
 }
 
-/* Title styling */
+/* Navigation Bar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #343a40;
+    color: white;
+    border-bottom: 2px solid #e0e0e0;
+    height: 40px;
+}
+
+.menu-icon {
+    position: relative;
+    cursor: pointer;
+}
+
+.menu-icon i {
+    font-size: 24px;
+}
+
+.menu-icon:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 30px;
+    left: 0;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.logout-button {
+    background-color: #343a40;
+    color: white;
+    font-size: 1rem;
+}
+
+.logout-button:hover {
+    background-color: #1d2124;
+}
+
+/* Title Styling */
 .dashboard-title {
-    text-align: center; /* Center the title */
-    margin-bottom: 30px; /* Space below the title */
-    font-size: 2.5rem; /* Increase font size */
-    color: #333; /* Darker color for contrast */
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
 }
 
-/* Flex container for action buttons */
+/* Main Dashboard Container */
+.dashboard-container {
+    flex : 1;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Action Buttons Container */
 .action-buttons {
-    display: flex; /* Use flexbox for button alignment */
-    justify-content: space-around; /* Space buttons evenly */
-    margin-bottom: 20px; /* Space between buttons and forms */
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
 }
 
-/* Card style for each functionality */
-.card {
-    padding: 20px; /* Padding inside the card */
-    border-radius: 8px; /* Rounded corners */
-    background-color: #f7f7f7; /* Light gray background */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    margin-bottom: 20px; /* Space between cards */
-}
-
-/* Top right buttons */
-.top-right-buttons {
-    position: absolute; /* Positioning the buttons absolutely */
-    top: 10px; /* Adjust the distance from the top */
-    right: 10px; /* Adjust the distance from the right */
-}
-
-.top-right-buttons .btn {
-    margin-left: 10px; /* Space between the two buttons */
-}
-
-/* Button styles */
 .btn {
-    padding: 10px 20px; /* Increase button padding */
-    font-size: 1rem; /* Set font size */
-    border-radius: 5px; /* Rounded button corners */
-    border: none; /* Remove border */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin: 10px;
 }
 
-/* Button color scheme */
+/* Restored Button Colors */
 .btn-primary {
-    background-color: #007bff; /* Bootstrap primary color */
-    color: #fff; /* White text */
+    background-color: #007bff;
+    color: #fff;
 }
 
 .btn-secondary {
-    background-color: #6c757d; /* Bootstrap secondary color */
-    color: #fff; /* White text */
+    background-color: #6c757d;
+    color: #fff;
 }
 
 .btn-warning {
-    background-color: #ffc107; /* Bootstrap warning color */
-    color: #212529; /* Dark text */
+    background-color: #ffc107;
+    color: #212529;
 }
 
 .btn-info {
-    background-color: #17a2b8; /* Bootstrap info color */
-    color: #fff; /* White text */
+    background-color: #17a2b8;
+    color: #fff;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: #fff;
 }
 
 .btn-dark {
-    background-color: #343a40; /* Bootstrap dark color */
-    color: #fff; /* White text */
+    background-color: #343a40;
+    color: #fff;
 }
 
-/* Button hover effects */
+/* Button Hover Effects */
 .btn:hover {
-    transform: translateY(-2px); /* Lift effect on hover */
+    transform: translateY(-2px);
 }
 
 .btn-primary:hover {
-    background-color: #0056b3; /* Darker blue */
+    background-color: #0056b3;
 }
 
 .btn-secondary:hover {
-    background-color: #5a6268; /* Darker gray */
+    background-color: #5a6268;
 }
 
 .btn-warning:hover {
-    background-color: #e0a800; /* Darker yellow */
+    background-color: #e0a800;
 }
 
 .btn-info:hover {
-    background-color: #138496; /* Darker cyan */
+    background-color: #138496;
+}
+
+.btn-success:hover {
+    background-color: #218838;
 }
 
 .btn-dark:hover {
-    background-color: #1d2124; /* Darker gray */
+    background-color: #1d2124;
 }
 
-/* Responsive styles */
+/* Footer Styling */
+.dashboard-footer {
+    padding: 10px;
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+}
+
+.dashboard-footer a {
+    color: #f8f9fa;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.dashboard-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Styles */
 @media (max-width: 768px) {
-    .action-buttons {
-        flex-direction: column; /* Stack buttons on smaller screens */
-        align-items: center; /* Center align buttons */
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
-    .top-right-buttons {
-        position: relative; /* Change positioning for smaller screens */
-        top: auto; /* Reset top position */
-        right: auto; /* Reset right position */
-        margin: 10px 0; /* Add margin */
+    .dashboard-container {
+        margin-top: 30px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        align-items: center;
     }
 }

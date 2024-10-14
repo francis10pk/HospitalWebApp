@@ -1,1 +1,13 @@
-<p>track-progress works!</p>
+<!-- <div style="display: block;">
+    <canvas baseChart
+            [datasets]="[{ data: chartData, label: patient?.name || 'Unknown' }]"
+            [labels]="chartLabels"
+            [options]="{ responsive: true }"
+            [colors]="[{ backgroundColor: ['rgba(63, 81, 181, 0.6)', 'rgba(244, 67, 54, 0.6)', 'rgba(76, 175, 80, 0.6)', 'rgba(255, 235, 59, 0.6)', 'rgba(0, 188, 212, 0.6)'] }]">
+    </canvas>
+  </div>
+   -->
+   <div style="display: block;">
+    <canvas #chartCanvas></canvas> <!-- Reference to the canvas element -->
+  </div>
+  

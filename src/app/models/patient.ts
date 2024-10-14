@@ -16,4 +16,3 @@ export interface Patient {
     sugarLevel: number;    
     heartRate: number;     
   }
-  

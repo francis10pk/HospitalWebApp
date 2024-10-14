@@ -1,15 +1,22 @@
-input {
+/* General styles for input fields */
+input, select {
   margin: 10px 0;
   padding: 8px;
-  width: 200px;
+  border: 1px solid #ccc; /* Border for input and select fields */
+  border-radius: 4px; /* Rounded corners */
+}
+
+/* Specific styles for input and select widths */
+input {
+  width: 200px; /* Fixed width for input fields */
 }
 
 select {
-  margin: 10px 0;
-  padding: 8px;
-  width: 150px;
+  width: 150px; /* Fixed width for select fields */
+
 }
 
+/* Styles for buttons */
 button {
   padding: 10px 20px;
   background-color: #4CAF50;
@@ -20,47 +27,79 @@ button {
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: black;
 }
 
+/* Styles for the form layout */
 form {
   display: flex;
   flex-direction: column;
 }
 
+/* Styles for labels */
 label {
   margin: 5px 0;
-}
-input {
-  margin: 10px 0;
-  padding: 8px;
-  width: 200px;
+  display: block; /* Ensures the label occupies its own line */
 }
 
-select {
-  margin: 10px 0;
-  padding: 8px;
-  width: 150px;
-}
-
-button {
-  padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
-  margin: 10px 0;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-form {
+/* Container styles for patient management */
+.patient-management {
   display: flex;
   flex-direction: column;
+  align-items: center; /* Center align items */
+  background-color: whitesmoke;
 }
 
-label {
-  margin: 5px 0;
+/* Search container styles */
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc; /* Border for search container */
+  border-radius: 8px; /* Rounded corners */
+  padding: 30px; /* Spacing around content */
+  width: 100vh; /* Fixed width for search container */
+  margin-bottom: 20px; /* Spacing from other elements */
+  background-color: #f9f9f9;
+}
+
+/* Container styles for patient details and see details */
+.patient-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9f9f9; /* Light background for details */
+  border: 1px solid #ccc; /* Border for details */
+  border-radius: 8px; /* Rounded corners */
+  padding: 30px; /* Spacing around content */
+  width: 100vh; /* Width of the container */
+  margin: 20px 0; /* Spacing from other elements */
+  
+}
+
+/* Styles for see details links */
+a.see-details {
+  color: #007BFF; /* Default color for links */
+  text-decoration: none; /* Remove underline by default */
+}
+
+a.see-details:hover {
+  color: #0056b3; /* Darker color on hover */
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Space between each input group in the form */
+form div {
+  margin-bottom: 15px; /* Adds space between each input group */
+}
+.All-patients-Container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px; 
+  padding: 30px; 
+  width: 100vh; 
+  margin-bottom: 20px; 
+  background-color: #f9f9f9;
 }

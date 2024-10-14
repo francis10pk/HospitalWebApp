@@ -59,17 +59,45 @@ export class CreateEditPatientComponent implements OnInit {
   }
 
   onCreatePatient(): void {
-    // Ensure all properties are defined before creating a patient
-    if (this.isPatientValid(this.patient)) {
-      this.patientService.createPatient(this.patient);
-
+    // Use Angular's form validation before submission
+    if (this.createPatientForm.valid && this.isPatientValid(this.patient)) {
+      this.patientService.createPatient(this.patient).subscribe(() => {
+        this.message = 'Patient created successfully!';
+        this.resetPatientData();
+        
+      }, error => {
+        console.error("Error creating patient", error);
+        this.message = 'Failed to create patient. Please try again.';
+      });
     } else {
       console.error("Patient data is invalid");
+      this.message = 'Please fill out all fields correctly.';
     }
   }
+
+  // Reset patient object to default values
+  resetPatientData(): void {
+    this.patient = {
+      id: 0,
+      name: '',
+      age: 0,
+      gender: '',
+      vitals: {
+        weight: 0,
+        height: 0,
+        bloodPressure: '',
+        sugarLevel: 0,
+        heartRate: 0
+      },
+      ongoingMedications: '',
+      allergies: '',
+      critical: false
+    };
+  }
+
+  // Validate patient object
   private isPatientValid(patient: Patient): boolean {
     return (
-      typeof patient.id === 'number' &&
       typeof patient.name === 'string' &&
       typeof patient.age === 'number' && patient.age > 0 &&
       typeof patient.gender === 'string' &&
@@ -79,7 +107,7 @@ export class CreateEditPatientComponent implements OnInit {
       typeof patient.critical === 'boolean'
     );
   }
-  
+
   private isVitalsValid(vitals: Vitals): boolean {
     return (
       typeof vitals.weight === 'number' && vitals.weight > 0 &&
@@ -89,6 +117,4 @@ export class CreateEditPatientComponent implements OnInit {
       typeof vitals.heartRate === 'number' && vitals.heartRate > 0
     );
   }
-  
-
 }

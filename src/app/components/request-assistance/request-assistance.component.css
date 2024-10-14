@@ -2,6 +2,7 @@
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
+    background-color: #f9f9f9;
 }
 
 .btn-danger {
@@ -35,3 +36,34 @@
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+.btn-load-patientData {
+    padding: 10px 20px; /* Padding inside the button */
+    background-color:#4CAF50; /* Background color */
+    color: white; /* Text color */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin: 10px 0; /* Spacing above and below the button */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  .btn-load-patientData:hover {
+    background-color: black; /* Darker shade on hover */
+  }
+  .btn-submit-request{
+  
+        padding: 10px 20px; /* Padding inside the button */
+        background-color:#4CAF50; /* Background color */
+        color: white; /* Text color */
+        border: none; /* Remove default border */
+        border-radius: 4px; /* Rounded corners */
+        cursor: pointer; /* Pointer cursor on hover */
+        margin: 10px 0; /* Spacing above and below the button */
+        font-size: 16px; /* Font size */
+        transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+  .btn-submit-request:hover{
+    background-color: black; /* Darker shade on hover */
+  }
+  
