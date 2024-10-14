@@ -1,0 +1,83 @@
+input, select {
+    margin: 10px 0;
+    padding: 8px;
+    border: 1px solid #ccc; /* Border for input and select fields */
+    border-radius: 4px; /* Rounded corners */
+  }
+  /* Specific styles for input and select widths */
+  input {
+    width: 200px; /* Fixed width for input fields */
+  }
+  select {
+    width: 150px;
+  }
+  button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 10px 0;
+  }
+  button:hover {
+    background-color: black;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  label {
+    margin: 5px 0;
+    display: block;
+  }
+  /* Container styles for patient management */
+.patient-management {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align items */
+  background-color: whitesmoke;}
+
+  .search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc; /* Border for search container */
+    border-radius: 8px; /* Rounded corners */
+    padding: 30px; /* Spacing around content */
+    width: 100vh; /* Fixed width for search container */
+    margin-bottom: 20px; /* Spacing from other elements */
+    background-color: #f9f9f9;
+  }
+  .patient-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9; /* Light background for details */
+    border: 1px solid #ccc; /* Border for details */
+    border-radius: 8px; /* Rounded corners */
+    padding: 30px; /* Spacing around content */
+    width: 100vh; /* Width of the container */
+    margin: 20px 0; /* Spacing from other elements */
+  }
+  a.see-details {
+    color: #007BFF; /* Default color for links */
+    text-decoration: none;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  form div {
+    margin-bottom: 15px;
+  }
+  .All-patients-Container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px; 
+    padding: 30px; 
+    width: 100vh; 
+    margin-bottom: 20px; 
+    background-color: #f9f9f9;
+  }

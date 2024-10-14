@@ -14,7 +14,9 @@ import { CommonModule } from '@angular/common';
 export class NurseLoginComponent implements OnInit {
   username: string = '';
   password: string = '';
+  rememberMe: boolean = false; // Added for "Remember Me"
   message: { text: string; success: boolean } | null = null;
+  showPassword: boolean = false;
 
   constructor(private authService: AuthServiceService, private router: Router) {}
 
@@ -24,10 +26,18 @@ export class NurseLoginComponent implements OnInit {
       return;
     }
 
+
     this.authService.login(this.username, this.password).subscribe({
       next: (response) => {
-        this.message = { text: response.message, success: response.success };
+        this.message = { text: response.message, success: response.success 
+        };
         if (response.success) {
+          if (this.rememberMe) {
+            // Store username in localStorage if "Remember Me" is checked
+            localStorage.setItem('rememberMe', this.username);
+          } else {
+            localStorage.removeItem('rememberMe');
+          }
           this.router.navigate(['/dashboard']);
         }
       },
@@ -40,10 +50,17 @@ export class NurseLoginComponent implements OnInit {
   onForgotPassword() {
     this.router.navigate(['/forgot-password']);
   }
-
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword; // Toggles password visibility
+  }
   ngOnInit(): void {
     this.username = '';
     this.password = '';
     this.message = null;
+    const savedUsername = localStorage.getItem('rememberMe');
+    if (savedUsername) {
+      this.username = savedUsername;
+      this.rememberMe = true;
+    }
   }
 }

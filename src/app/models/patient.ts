@@ -1,7 +1,7 @@
 export interface Patient {
     id: number;
     name: string;
-    age: number | null;
+    age: number;
     gender: string;  
     vitals: Vitals;
     ongoingMedications: string;
@@ -9,10 +9,10 @@ export interface Patient {
     critical: boolean; // Flag if the patient is in a critical condition
   }
   export interface Vitals {
-    weight: number | null;
-    height: number | null;
+    weight: number;
+    height: number;
     bloodPressure: string;
-    sugarLevel: number | null;
-    heartRate: number | null;
+    sugarLevel: number;
+    heartRate: number;
   }
   

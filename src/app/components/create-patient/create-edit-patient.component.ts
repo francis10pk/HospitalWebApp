@@ -19,14 +19,14 @@ export class CreateEditPatientComponent implements OnInit {
   patient: Patient = {
     id: 0,
     name: '',
-    age: null, // Allow null for flexibility
+    age: 0, 
     gender: '',
     vitals: {
-      weight: null,
-      height: null,
+      weight: 0,
+      height: 0,
       bloodPressure: '',
-      sugarLevel: null,
-      heartRate: null
+      sugarLevel: 0,
+      heartRate: 0
     },
     ongoingMedications: '',
     allergies: '',
@@ -82,14 +82,14 @@ export class CreateEditPatientComponent implements OnInit {
     this.patient = {
       id: 0,
       name: '',
-      age: null,
+      age: 0,
       gender: '',
       vitals: {
-        weight: null,
-        height: null,
+        weight: 0,
+        height: 0,
         bloodPressure: '',
-        sugarLevel: null,
-        heartRate: null
+        sugarLevel: 0,
+        heartRate: 0
       },
       ongoingMedications: '',
       allergies: '',

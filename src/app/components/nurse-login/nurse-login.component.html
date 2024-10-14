@@ -1,4 +1,4 @@
-<div class="login-container">
+<!-- <div class="login-container">
     <h2>Nurse Login</h2>
     <form (ngSubmit)="onLogin()" #loginForm="ngForm">
       <div class="form-group">
@@ -38,4 +38,95 @@
       </div>
     </form>
   </div>
-  
+   -->
+
+   <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+   
+  </head>
+  <div class="main-wrapper">
+    <div class="content-wrapper">
+      <!-- Full-height image on the left side -->
+      <div class="left-section">
+        <img src="assets/Login.jpg" alt="Medical Illustration" class="full-height-image" />
+      </div>
+      <div>
+        <!-- Welcome Message at the top of the login container -->
+        <div class="welcome-message">
+          <h1>Welcome to Cliniva</h1>
+          <div class="signup-link">
+            Need an account? <a href="#" class="sign-up-link">Sign Up</a>
+          </div>
+        </div>
+           <!-- Login form on the right side -->
+    <div class="right-section">
+      <div class="login-container">
+        <!-- SignIn Msg -->
+        
+          <h2>Sign in</h2>
+      
+        <!-- Login Form -->
+        <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              required
+              [(ngModel)]="username"
+              class="form-control"
+              placeholder="admin@hospital.org"
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password-wrapper">
+              <input
+                [type]="showPassword ? 'text' : 'password'"
+                id="password"
+                name="password"
+                required
+                [(ngModel)]="password"
+                class="form-control"
+                placeholder="********"
+              />
+              <span class="toggle-password" (click)="togglePasswordVisibility()">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+              </span>
+            </div>
+          </div>
+          <div class="form-group form-flex">
+            <div class="checkbox-container">
+              <label for="rememberMe">
+                <input type="checkbox" id="rememberMe" name="rememberMe" [(ngModel)]="rememberMe" />
+                Remember Me
+              </label>
+            </div>
+            <div class="forgot-password-container">
+              <a (click)="onForgotPassword()" class="forgot-password-link">Forgot Password?</a>
+            </div>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Login</button>
+          </div>
+          <div *ngIf="message" class="alert" [ngClass]="{ 'alert-success': message.success, 'alert-danger': !message.success }">
+            {{ message.text }}
+          </div>
+        </form>
+      </div>
+              <!-- Social Media Login -->
+              <div class="social-login">
+                <span>----------OR----------</span> <br><br>
+                <div class="social-icons">
+                  <a href="#" class="social-icon"><i class="fab fa-google"></i></a>
+                  <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                  <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
