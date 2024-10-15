@@ -63,10 +63,15 @@ export class NurseDashboardComponent {
     this.onOptionSelect();
   }
 
-  onShowGraph(patientId: number) { // Now it takes a patientId parameter
-    console.log('Patient ID set for graph:', patientId); // Add log here
-    this.selectedPatientId = patientId; // Set selected patient ID
-    this.activeForm = 'showgraph'; // Set active form to show graph
+  // onShowGraph(patientId: number) { // Now it takes a patientId parameter
+  //   console.log('Patient ID set for graph:', patientId); // Add log here
+  //   this.selectedPatientId = patientId; // Set selected patient ID
+  //   this.activeForm = 'showgraph'; // Set active form to show graph
+  //   this.onOptionSelect(); // Close dropdown
+  // }
+  onShowGraph() {
+    // Do not set the activeForm here; that will happen in the child component
+    this.activeForm = 'showgraph'; // This will show the Track Progress component
     this.onOptionSelect(); // Close dropdown
   }
 

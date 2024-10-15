@@ -1,4 +1,56 @@
+
+  /* Styling for the graph input container */
+.graph-input-container {
+  margin: 20px 0; /* Adds spacing above and below */
+  padding: 15px; /* Adds padding inside the container */
+  border: 1px solid #007bff; /* Blue border */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #f9f9f9; /* Light background color */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Style for labels */
+.graph-input-container label {
+  display: block; /* Make label take full width */
+  margin-bottom: 8px; /* Space below the label */
+  font-weight: bold; /* Bold font */
+  color: #333; /* Dark color for readability */
+}
+
+/* Style for input field */
+.graph-input-container input.form-control {
+  width: 100%; /* Full width */
+  padding: 10px; /* Padding inside the input */
+  border: 1px solid #007bff; /* Blue border */
+  border-radius: 5px; /* Slightly rounded corners */
+  font-size: 16px; /* Font size for the input */
+}
+
+/* Style for the load graph button */
+.graph-input-container .btn-primary {
+  margin-top: 10px; /* Space above the button */
+  background-color: #007bff; /* Primary button color */
+  border: none; /* Remove default border */
+  color: white; /* White text */
+  font-size: 16px; /* Font size for the button */
+  padding: 10px 20px; /* Padding inside the button */
+  border-radius: 5px; /* Slightly rounded corners */
+  transition: background-color 0.3s; /* Smooth transition on hover */
+}
+
+/* Button hover effect */
+.graph-input-container .btn-primary:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Styling for the chart canvas */
 canvas {
-    max-height: 400px; /* Set a maximum height for the canvas */
-  }
-  
+  max-height: 400px;
+}
+
+/* Optional: Message when no data is available */
+p {
+  color: #dc3545; /* Red color for error messages */
+  font-weight: bold; /* Bold text */
+  text-align: center; /* Center the message */
+}
