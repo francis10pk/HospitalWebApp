@@ -1,8 +1,8 @@
 <div class="request-assistance-container">
     <h2>Patient Health Monitoring</h2>
     <div *ngIf="!patientLoaded">
-        <label for="customerId">Enter Customer ID:</label>
-        <input type="text" [(ngModel)]="customerId" id="customerId" class="form-control" placeholder="Customer ID" />
+        <label for="customerId">Enter Patient ID:</label>
+        <input type="text" [(ngModel)]="customerId" id="customerId" class="form-control" placeholder="Patient ID" />
         <button (click)="loadPatientData()" class="btn-load-patientData">Load Patient Data</button>
     </div>
     <!-- Once patient data is loaded -->
