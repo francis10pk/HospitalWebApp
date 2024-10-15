@@ -1,6 +1,11 @@
-<div class="patient-item">
-    <h3>{{ patient.name }}</h3>
-    <p>Age: {{ patient.age }}</p>
-    <p>Gender: {{ patient.gender }}</p>
-    <a (click)="viewDetails(patient.id)">See Details</a>
-</div>
+<div class="patient-container">
+    <div class="patient-item">
+      <h3>{{ patient.name }}</h3>
+      <p>Age: {{ patient.age }}</p>
+      <p>Gender: {{ patient.gender }}</p>
+    </div>
+    <div>
+      <a class="forgot-password-link" (click)="viewDetails(patient.id)">See Details</a>
+    </div>
+  </div>
+  

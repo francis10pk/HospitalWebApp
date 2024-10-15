@@ -1,0 +1,22 @@
+.patient-container {
+    display: flex; /* Apply Flexbox to container */
+    justify-content: space-between; /* Space between the elements */
+    align-items: center; /* Vertically center the items */
+    border: 1px solid #ccc; /* Optional styling for visibility */
+    padding: 10px; /* Optional padding for space around content */
+    margin-bottom: 10px; /* Optional margin to separate each container */
+  }
+  
+  .patient-item {
+    flex: 1; /* Make the patient details take up the remaining space */
+  }
+  
+  .forgot-password-link {
+    text-decoration: none;
+    color: #007bff; /* Optional: Bootstrap-like link color */
+    cursor: pointer;
+  }
+  
+  .forgot-password-link:hover {
+    text-decoration: underline;
+  }

@@ -10,7 +10,7 @@
         <input type="text" [(ngModel)]="searchTerm" (input)="filterPatients()" placeholder="Search by {{searchBy === 'name' ? 'name' : 'ID'}}..." />
       </div>
     <div class="All-patients-Container">
-      <h2>Records Of All Ptaients</h2>
+      <h2>Records Of All Patients</h2>
       <div *ngIf="!searchTerm" >
         <app-patient-item-list
           *ngFor="let patient of patients"
