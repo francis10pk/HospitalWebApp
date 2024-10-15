@@ -8,6 +8,7 @@ export class VitalServiceService {
 
   constructor() { }
   getPatientById(id: number): Patient | undefined {
+    console.log('Fetching patient with ID:', id);
     // Check if PATIENTS array is defined and not empty
     if (!PATIENTS || PATIENTS.length === 0) {
       console.error('No patients available');

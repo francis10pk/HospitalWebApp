@@ -56,9 +56,7 @@ export class NurseDashboardComponent implements OnInit {
     this.activeForm = 'editpassword';
     this.onOptionSelect();
   }
-  onShowGraph(patientId: number) { // Now it takes a patientId parameter
-    console.log('Patient ID set for graph:', patientId); // Add log here
-    this.selectedPatientId = patientId; // Set selected patient ID
+  onShowGraph() { // Now it takes a patientId parameter
     this.activeForm = 'showgraph'; // Set active form to show graph
     this.onOptionSelect(); // Close dropdown
   }
